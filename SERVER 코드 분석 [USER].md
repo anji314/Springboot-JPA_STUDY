@@ -33,8 +33,8 @@
 		  ```  
 		  XXXX(==header).YYYY(==payload).ZZZZ(==signature)
 		  ```
-		1. Header
-			- token의 type 과 서명에 사용된 알고리즘 으로 구성.
+	1. Header
+		- token의 type 과 서명에 사용된 알고리즘 으로 구성.
 			
 			  ```  http
 			  { 
@@ -70,7 +70,7 @@
 			
 			 => 이 데이터가 Base64 인코딩 되어 두 번째 파트에 들어가게 된다..
 			
-		3. Signature(서명) 
+	3. Signature(서명) 
 		
 		  -  암호 알고리즘으로 HMAC SHA256 알고리즘을 쓴다고 가정하면 서명을 만들기 위해 아래 공식을 사용한다.
 		  - ex) HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload),secret)
