@@ -1,9 +1,5 @@
 ## SERVER 코드 분석 [USER]
 
-- 네비게이션
-  <img src=".\typora-user-images\image-20200715152456435.png" alt="image-20200715152456435" style="zoom:80%;" /><img src=".\typora-user-images\image-20200716112110380.png" alt="image-20200716112110380" style="zoom:80%;" />
-
-
 
 -------------------------------------------------
 
@@ -87,7 +83,7 @@
 
 
 
- - #### **ResponseEntity **
+ - #### ResponseEntity
 	
 	- Spring Framework에서 제공하는 클래스 중 **HttpEntity라는 클래스**가 존재한다. HTTP요청(Request)또는 응답(Response)에 해당하는 HttpHeader와 HttpBody를 포함하는 클래스인데, **이 클래스를 상속받아 구현한 클래스**가 RequestEntity와 **ResponseEntity**이다.
 	
