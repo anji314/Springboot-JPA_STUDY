@@ -258,8 +258,8 @@ public class UserRegisterService {
 
     => 여기서는 **private UserService userService;** 를 호출하여 이 클래스에서 UserRepository를 사용해 DB에서 유저정보를 가져온다.
 
-  ```
-  @Service
+ ```
+@Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CustomUserDetailsService implements UserDetailsService {
     @NonNull
@@ -274,11 +274,11 @@ public class CustomUserDetailsService implements UserDetailsService {
                 user.getUserId(), user.getPassword(), user.getRoles(), !user.getLocked(), user.checkActiveUser());
     }
 }
-  ```
+```
   
   
   
-- #### AuthenticationProvider 추가하기
+ #### AuthenticationProvider 추가하기
 
   - 직접 작성한 인증시스템인 CustomAuthenticationProvider를 ProviderManager가 알 수 있게 ProviderManager에게 등록하면된다.
 
@@ -297,19 +297,10 @@ protected void configure(HttpSecurity http) throws Exception { http.authorizeReq
 }
 ```
 
-=> 해당 부분은 깃소스에 없다....
-
-
-
-​																																															-~2020.07.15 작성 완료-
+																																													-~2020.07.15 작성 완료-
 
 -----------------------------------------------------------
 
-
-
-### 3)UserRepository
-
--> 추가할 예정.
 
 
 
