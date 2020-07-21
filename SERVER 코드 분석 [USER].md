@@ -258,8 +258,22 @@ public class UserRegisterService {
 
     => 여기서는 **private UserService userService;** 를 호출하여 이 클래스에서 UserRepository를 사용해 DB에서 유저정보를 가져온다.
 
-  ```java
-  jxxxxxxxxxx @Service@RequiredArgsConstructor(onConstructor = @__(@Autowired))public class CustomUserDetailsService implements UserDetailsService {    @Value("${login.failMaxCnt}")    private Integer failMaxCnt;    @NonNull    private UserService userService;   <= 여기!    @Override    @Transactional(readOnly = true)    public UserDetails loadUserByUsername(String email) {        User user = this.userService.findByUserId(email);        Collection<GrantedAuthority> grantedAuthorities = user.getRoles().stream()                .map(role -> new SimpleGrantedAuthority(role.getType().name()))                .collect(Collectors.toList());        return new UserPrincipal(user.getUserNo().getId(), user.getEmail(), user.getPassword(),                user.getNickname(), user.getStatus(), user.isSocialSignup(), user.getProfilePath(),                !user.checkUserLock(failMaxCnt), user.checkActiveUser(), grantedAuthorities);    }}
+  ```
+  @Service
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+public class CustomUserDetailsService implements UserDetailsService {
+    @NonNull
+    private UserService userService;
+
+    @Override
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String userId) {
+        User user = this.userService.findByUserId(userId);
+
+        return new UserPrincipal(user.getUserNo().getId(),
+                user.getUserId(), user.getPassword(), user.getRoles(), !user.getLocked(), user.checkActiveUser());
+    }
+}
   ```
   
   
